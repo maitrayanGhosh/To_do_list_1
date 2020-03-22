@@ -104,16 +104,24 @@ app.post('/create_task',(req,res)=>{
 
 
 app.get('/delete-task/',(req,res)=>{
-    console.log(req.query)
-    let desc  = req.query.description
+    //console.log(req.query)
+    // let desc  = req.query.description
 
-    let taskInd = taskList.findIndex(descp => descp.description == desc)
+    // let taskInd = taskList.findIndex(descp => descp.description == desc)
 
-    if(taskInd != -1 ){
-        taskList.splice(taskInd,1);
-    }
+    // if(taskInd != -1 ){
+    //     taskList.splice(taskInd,1);
+    // }
 
-    return res.redirect('back')
+    let id = req.query.id
+
+    Task.findByIdAndDelete(id,(err)=>{
+        if(err){
+        console.log('error in deleting object in database')
+        return
+        }
+        return res.redirect('back')
+    })
 
 })
 

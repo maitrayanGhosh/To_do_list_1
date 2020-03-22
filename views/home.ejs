@@ -44,10 +44,6 @@
 </form>
 
 
-
-
-<p><%= task_list[0].description  %></p>
-
 <div id="task-list-cont">
     <ul>
         <% for(let i of task_list) {%>
@@ -61,7 +57,7 @@
                 </div>
 
                 <div class="delete">
-                    <a href="/delete-task/?description=<%= i.description %> ">
+                    <a href="/delete-task/?id=<%= i._id %> ">
                        Delete 
                     </a>
                 </div>
