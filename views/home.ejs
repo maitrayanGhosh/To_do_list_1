@@ -1,5 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+    </head>
+<body>
 
- <link rel="stylesheet" href="/css/home.css">
+<h2>To do list</h2>
 
+<p><%=  test %></p>
+  
+<div>
+<form id="task-form" action="/create_task" method="POST">
+
+<label for="fname">Description:</label><br>
+<input type="text" id="fname" name="fname"><br>
  
-<h1>cat</h1>
+<label for="task">Category:</label>
+
+<select id="task">
+  <option value="Work">Work</option>
+  <option value="Personal">Personal</option>
+  <option value="Cleaning">Cleaning</option>
+  <option value="School">School</option>
+</select>
+
+<label for="birthday">Due Date:</label>
+  <input type="date" id="birthday" name="birthday">
+<br>
+  <button type="submit">Add Task</button>
+
+</form>
+
+
+
+
+<p><%= task_list[0].description  %></p>
+
+<div>
+    <ul>
+        <% for(let i of task_list) {%>
+
+            <li>
+                <p><%= i.description%></p>
+                <p><%= i.category%></p>
+                <p><%= i.dueDate%></p>
+            </li>
+
+        <% } %>    
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
