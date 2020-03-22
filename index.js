@@ -3,6 +3,8 @@ const express = require('express')
 const path = require('path')
 const port = 5000
 
+const db = require('./config/mongoose')
+const Task = require('./models/task')
 // instatiating express
 const app = express()
 
@@ -43,10 +45,18 @@ var taskList=[
 
 // controller
 app.get('/',(req,res)=>{
-    return res.render('home',{
-        title: "To do list",
-        test : "cat",
-        task_list : taskList
+
+    Task.find({},(err, task)=>{
+        if(err){
+            console.log('Error in fetching contacts')
+            return
+        }
+
+        return res.render('home',{
+            title: "To do list",
+            test : "cat",
+            task_list : task
+        })
     })
 })
 
@@ -65,18 +75,30 @@ app.post('/create_task',(req,res)=>{
     //     console.log('******', newContact)
     //     return res.redirect('back')
     // })
-    console.log(req.body)
-    console.log(req.body.fname)
-    console.log(req.body.task)
-    console.log(req.body.birthday)
-    console.log(req.body.prior)
+    // console.log(req.body)
+    // console.log(req.body.fname)
+    // console.log(req.body.task)
+    // console.log(req.body.birthday)
+    // console.log(req.body.prior)
     
-    var temp = {description:req.body.fname,     category:req.body.task,     dueDate:req.body.birthday , priority : req.body.prior }
+    //var temp = {description:req.body.fname,     category:req.body.task,     dueDate:req.body.birthday , priority : req.body.prior }
 
-    taskList.push(temp)
+    //taskList.push(temp)
 
-    return res.redirect('back')
+    Task.create({
+       description : req.body.fname,
+       category:req.body.task,     
+       dueDate:req.body.birthday, 
+       priority : req.body.prior
+    },(err,newTask)=>{
+        if(err){
+            console.log('error in creating a contact')
+            return
+        }
 
+        console.log('***',newTask)
+        return res.redirect('back')
+    })
 })
 
 
