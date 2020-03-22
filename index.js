@@ -19,20 +19,24 @@ var taskList=[
     {
         description : "milk",
         catagory : "personal",
-        dueDate : "11/11/2020"
+        dueDate : "11/11/2020",
+        priority : "high"
     },
 
     {
         description : "chicken",
         catagory : "personal",
         dueDate : "13/11/2020"
+        ,
+        priority : "medium"
     },
 
     {
         description : "hw",
         catagory : "school",
-        dueDate : "12/11/2020"
-    },
+        dueDate : "12/11/2020",
+        priority : "low"
+    }
 ]
 
 
@@ -61,12 +65,35 @@ app.post('/create_task',(req,res)=>{
     //     console.log('******', newContact)
     //     return res.redirect('back')
     // })
+    console.log(req.body)
+    console.log(req.body.fname)
+    console.log(req.body.task)
+    console.log(req.body.birthday)
+    console.log(req.body.prior)
     
+    var temp = {description:req.body.fname,     category:req.body.task,     dueDate:req.body.birthday , priority : req.body.prior }
+
+    taskList.push(temp)
+
+    return res.redirect('back')
+
 })
 
 
 
+app.get('/delete-task/',(req,res)=>{
+    console.log(req.query)
+    let desc  = req.query.description
 
+    let taskInd = taskList.findIndex(descp => descp.description == desc)
+
+    if(taskInd != -1 ){
+        taskList.splice(taskInd,1);
+    }
+
+    return res.redirect('back')
+
+})
 
 
 

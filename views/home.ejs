@@ -14,22 +14,32 @@
 <div>
 <form id="task-form" action="/create_task" method="POST">
 
+
 <label for="fname">Description:</label><br>
-<input type="text" id="fname" name="fname"><br>
- 
+<input type="text" id="fname" name="fname"><br> 
 <label for="task">Category:</label>
 
-<select id="task">
+<select type="text" id="task" name="task">
   <option value="Work">Work</option>
   <option value="Personal">Personal</option>
   <option value="Cleaning">Cleaning</option>
   <option value="School">School</option>
 </select>
 
-<label for="birthday">Due Date:</label>
-  <input type="date" id="birthday" name="birthday">
+<select type="text" id="prior" name="prior">
+    <option value="High">high</option>
+    <option value="Medium">medium</option>
+    <option value="Low">low</option>
+</select>
+
+
+
+<label for="dueDate">Due Date:</label>
+  <input type="date" id="dueDate" name="birthday">
 <br>
-  <button type="submit">Add Task</button>
+
+
+<button type="submit">Add Task</button>
 
 </form>
 
@@ -38,14 +48,23 @@
 
 <p><%= task_list[0].description  %></p>
 
-<div>
+<div id="task-list-cont">
     <ul>
         <% for(let i of task_list) {%>
 
             <li>
+                <div>
                 <p><%= i.description%></p>
                 <p><%= i.category%></p>
                 <p><%= i.dueDate%></p>
+                <p><%= i.priority%></p>
+                </div>
+
+                <div class="delete">
+                    <a href="/delete-task/?description=<%= i.description %> ">
+                       Delete 
+                    </a>
+                </div>
             </li>
 
         <% } %>    
@@ -57,7 +76,7 @@
 
 
 
-
+<script type="text/javascript" src="/js/sample.js"></script>
 
 </body>
 </html>
