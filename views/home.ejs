@@ -4,6 +4,7 @@
         <title>
             <%= title %>
         </title>
+        <link rel="stylesheet" href="/css/home.css" >
     </head>
 <body>
 
@@ -11,44 +12,73 @@
 
 <p><%=  test %></p>
   
+<!-- form -->
+
 <div>
 <form id="task-form" action="/create_task" method="POST">
 
-
-<label for="fname">Description:</label><br>
+<!-- description feild -->
+<div id="desc">
+<label for="fname">Description:</label>
 <input type="text" id="fname" name="fname"><br> 
-<label for="task">Category:</label>
+</div>
 
+
+
+<!-- category feild -->
+<div id="cate">
+<label for="task">Category:</label>
 <select type="text" id="task" name="task">
   <option value="Work">Work</option>
   <option value="Personal">Personal</option>
   <option value="Cleaning">Cleaning</option>
   <option value="School">School</option>
 </select>
+</div>
 
+<br>
+
+
+
+
+<!--priority feild -->
+
+<div id="priori">
+<label>Priority:</label>
 <select type="text" id="prior" name="prior">
     <option value="High">high</option>
     <option value="Medium">medium</option>
     <option value="Low">low</option>
 </select>
-
-
-
-<label for="dueDate">Due Date:</label>
-  <input type="date" id="dueDate" name="birthday">
+</div>
 <br>
 
 
-<button type="submit">Add Task</button>
+
+
+<!--due date feild   -->
+
+<div id="dd">
+<label for="dueDate">Due Date:</label>
+  <input type="date" id="dueDate" name="birthday">
+<br>
+</div>
+
+
+
+<!-- submit button -->
+
+<button type="submit" id="sub">Add Task</button>
 
 </form>
 
+<!-- displaying the tasks -->
 
 <div id="task-list-cont">
     <ul>
         <% for(let i of task_list) {%>
 
-            <li>
+            <li id="list-item">
                 <div>
                 <p><%= i.description%></p>
                 <p><%= i.category%></p>

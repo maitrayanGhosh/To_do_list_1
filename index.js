@@ -60,30 +60,9 @@ app.get('/',(req,res)=>{
     })
 })
 
-
+// this handler is used to create task
 
 app.post('/create_task',(req,res)=>{
-  
-    // Contact.create({
-    //     name : req.body.name,
-    //     phone : req.body.phone
-    // },(err,newContact)=>{
-    //     if(err){
-    //         console.log('error')
-    //         return
-    //     }
-    //     console.log('******', newContact)
-    //     return res.redirect('back')
-    // })
-    // console.log(req.body)
-    // console.log(req.body.fname)
-    // console.log(req.body.task)
-    // console.log(req.body.birthday)
-    // console.log(req.body.prior)
-    
-    //var temp = {description:req.body.fname,     category:req.body.task,     dueDate:req.body.birthday , priority : req.body.prior }
-
-    //taskList.push(temp)
 
     Task.create({
        description : req.body.fname,
@@ -101,18 +80,10 @@ app.post('/create_task',(req,res)=>{
     })
 })
 
-
+// this task is used to delete task
 
 app.get('/delete-task/',(req,res)=>{
-    //console.log(req.query)
-    // let desc  = req.query.description
-
-    // let taskInd = taskList.findIndex(descp => descp.description == desc)
-
-    // if(taskInd != -1 ){
-    //     taskList.splice(taskInd,1);
-    // }
-
+   
     let id = req.query.id
 
     Task.findByIdAndDelete(id,(err)=>{

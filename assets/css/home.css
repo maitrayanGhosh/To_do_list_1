@@ -1,3 +1,45 @@
-h1{
-    color:blue;
+h2{
+    color:black;
+    text-align: center;
+}
+
+
+#cate{
+    background-color: blueviolet;
+    margin-top:10px;
+    margin-left: 600px;
+}
+
+#desc{
+    margin-left:600px;
+}
+
+#priori{
+    margin-left:600px;
+}
+
+#dd{
+    margin-left:600px;
+}
+
+#sub{
+    margin-top:20px;
+    margin-left:600px;
+}
+
+#task-list-cont{
+    margin-top:20px;
+    margin-left:600px;
+}
+
+
+body{
+    background-color: cadetblue;
+    font-family: sans-serif;
+}
+
+#list-item{
+    background-color: white;
+    margin-right: 200px;
+    
 }
